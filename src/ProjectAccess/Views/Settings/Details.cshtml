@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ProjectAccess.Models.ProjectRights>
+
+@{
+    ViewData["Title"] = "User projects";
+}
+
+<h2>User @ViewBag.CurrentUser</h2>
+<br />
+<table class="table table-bordered table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Project.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Project.ProjectName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Project.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasRights)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="width:5%">
+                    @Html.DisplayFor(modelItem => item.Project.Id)
+                </td>
+                <td style="width:30%">
+                    @Html.DisplayFor(modelItem => item.Project.ProjectName)
+                </td>
+                <td style="width:55%">
+                    @Html.DisplayFor(modelItem => item.Project.Description)
+                </td>
+                <td class="text-center" style="width:10%">
+                    <div class="custom-control custom-checkbox project-checkbox">
+                        @if (item.HasRights)
+                        {
+                            <input type="checkbox" class="custom-control-input" id="@item.Project.Id" user="@ViewBag.CurrentUser" checked>
+                        }
+                        else
+                        {
+                            <input type="checkbox" class="custom-control-input" id="@item.Project.Id" user="@ViewBag.CurrentUser">
+                        }
+                        <label class="custom-control-label" for="@item.Project.Id">&nbsp;</label>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<script src="~/js/settings.js"></script>

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ProjectAccess.Models.Project>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Projects</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-bordered table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>Tasks count</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </td>
+            <td>
+                @if (item.EndDate.HasValue)
+                {
+                    @Html.DisplayFor(modelItem => item.EndDate.Value);
+                }
+                else
+                {
+                    <p>Not ended</p>
+                }
+            </td>
+            <td> 
+            @if (item.Tasks != null)
+            {
+                @item.Tasks.Count
+            }
+            else
+            {
+                <p>0</p>
+            }
+            </td>
+            <td>
+                <a asp-action="Board" asp-route-id="@item.Id">Board</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                @if (User.IsInRole(RoleNames.Admin))
+                {
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> @:| 
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

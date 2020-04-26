@@ -1,0 +1,57 @@
+﻿.CanbanBoard {
+    height: 75vh;
+    margin: auto;
+}
+
+.CanbanColumnWrapper {
+    padding: 5px;
+    height: 100%;
+}
+
+.CanbanColumn {
+    padding: 15px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.CanbanHeaderTag {
+    font-size: x-large;
+    padding: 0 0 10px 0;
+
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+}
+
+.CanbanColumnContent {
+    border-radius: 10px;
+
+    -webkit-box-shadow: inset 0px 0px 128px -64px rgba(0,0,0,0.5);
+    -moz-box-shadow: inset 0px 0px 128px -64px rgba(0,0,0,0.5);
+    box-shadow: inset 0px 0px 128px -64px rgba(0,0,0,0.5);
+    background-color: #fafafa;
+
+
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+
+    overflow-y: scroll;
+}
+
+.CanbanTask {
+    padding: 12px;
+    margin: 10px;
+    border-radius: 5px;
+    background: white;
+    cursor: grabbing;
+    -webkit-box-shadow: 0px 2px 32px -16px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 2px 32px -16px rgba(0,0,0,0.5);
+    box-shadow: 0px 2px 32px -16px rgba(0,0,0,0.5);
+}
+
+.delete-icon {
+    float: right;
+    cursor: pointer;
+}

@@ -1,0 +1,96 @@
+﻿@addTagHelper "*, Microsoft.AspNet.Mvc.TagHelpers"
+@using My = ProjectAccess.Models
+@model ICollection<My.Task>
+
+@{
+    ViewData["Title"] = "Board: " + ViewBag.CurrentProjectName;
+}
+<h1>Board for project @ViewBag.CurrentProjectName</h1>
+<span id="projectId" style="display:none;">@ViewBag.ProjectId</span>
+<p>Kanban task manager</p>
+
+<div class="container">
+
+    <div class="CanbanBoard row">
+
+        <div class="col-sm-4 CanbanColumnWrapper">
+            <div class="CanbanColumn">
+                <span class="CanbanHeaderTag" data-toggle="tooltip" data-placement="top" title="Click to add a new task!">To do</span>
+                <div class="CanbanColumnContent" id="ColTodo">
+                    @if (Model != null)
+                    {
+                        @foreach (var Task in Model)
+                        {
+                            if (Task.Status == My.TaskStatus.Todo)
+                            {
+                                <div id="@Task.Id" class="CanbanTask">
+                                    @if (User.IsInRole(RoleNames.Admin))
+                                    {
+                                        <i id="delete-@Task.Id" class='delete-icon material-icons'>delete_forever</i>
+                                    }
+                                    <h5 class="title-@Task.Id">@Task.Title</h5>
+                                    <p class="desc-@Task.Id">@Task.Text</p>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4 CanbanColumnWrapper"
+             style="border-left: solid 1px #f0f0f0; border-right: solid 1px #f0f0f0">
+            <div class="CanbanColumn">
+                <span class="CanbanHeaderTag" data-toggle="tooltip" data-placement="top" title="Click to add a new task!">In progress</span>
+                <div class="CanbanColumnContent" id="ColProg">
+                    @if (Model != null)
+                    {
+                        @foreach (var Task in Model)
+                        {
+                            if (Task.Status == My.TaskStatus.InProgress)
+                            {
+                                <div id="@Task.Id" class="CanbanTask">
+                                    @if (User.IsInRole(RoleNames.Admin))
+                                    {
+                                        <i id="delete-@Task.Id" class='delete-icon material-icons'>delete_forever</i>
+                                    }
+                                    <h5 class="title-@Task.Id">@Task.Title</h5>
+                                    <p class="desc-@Task.Id">@Task.Text</p>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4 CanbanColumnWrapper">
+            <div class="CanbanColumn">
+                <span class="CanbanHeaderTag" data-toggle="tooltip" data-placement="top" title="Click to add a new task!">Done</span>
+                <div class="CanbanColumnContent" id="ColDone">
+                    @if (Model != null)
+                    {
+                        @foreach (var Task in Model)
+                        {
+                            if (Task.Status == My.TaskStatus.Done)
+                            {
+                                <div id="@Task.Id" class="CanbanTask">
+                                    @if (User.IsInRole(RoleNames.Admin))
+                                    {
+                                        <i id="delete-@Task.Id" class='delete-icon material-icons'>delete_forever</i>
+                                    }
+                                    <h5 class="title-@Task.Id">@Task.Title</h5>
+                                    <p class="desc-@Task.Id">@Task.Text</p>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="~/js/board.js"></script>
