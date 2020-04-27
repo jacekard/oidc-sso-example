@@ -36,6 +36,31 @@
     background-color: #1976d2;
     color: white;
     font-weight: 600;
+    justify-content: space-between;
+  }
+
+  .toolbar div {
+    display: flex;
+    flex-basis: calc(100% / 3);
+  }
+
+  .center-toolbar {
+    justify-content: center;
+  }
+
+  .right-toolbar {
+    justify-content: flex-end;
+  }
+
+  .login-button {
+    position:relative;
+    right: -80px;
+  }
+
+  .user-name {
+    margin-top: 8px;
+    margin-right: 10px;
+    white-space: nowrap;
   }
 
   .toolbar img {

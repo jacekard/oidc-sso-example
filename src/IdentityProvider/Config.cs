@@ -12,7 +12,7 @@ namespace Marvin.IDP
     {
         public static IEnumerable<IdentityResource> Ids =>
             new IdentityResource[]
-            { 
+            {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
                 new IdentityResources.Address(),
@@ -23,20 +23,20 @@ namespace Marvin.IDP
             };
 
         public static IEnumerable<ApiResource> Apis =>
-            new ApiResource[] 
+            new ApiResource[]
             {
                 new ApiResource(
-                    "imagegalleryapi", 
+                    "imagegalleryapi",
                     "Image Gallery API",
                     new List<string>() { "role" })
             };
-        
+
         public static IEnumerable<Client> Clients =>
-            new Client[] 
-            { 
+            new Client[]
+            {
                 new Client
                 {
-                    ClientName = "Image Gallery", 
+                    ClientName = "Image Gallery",
                     ClientId = "imagegalleryclient",
                     AllowedGrantTypes = GrantTypes.Code,
                     RequirePkce = true,
@@ -48,7 +48,7 @@ namespace Marvin.IDP
                     {
                         "https://localhost:44389/signout-callback-oidc"
                     },
-                    AllowedScopes = 
+                    AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
@@ -60,6 +60,48 @@ namespace Marvin.IDP
                     {
                         new Secret("secret".Sha256())
                     }
-                } };        
+                },
+                new Client
+                {
+                    ClientName = "Breaking Bad Gallery",
+                    ClientId = "breakingbadgallery",
+                    AccessTokenType = AccessTokenType.Jwt,
+                    AccessTokenLifetime = 330, // default 60 minutes
+                    IdentityTokenLifetime = 30,
+
+                    // RequireConsent = false,
+                    RequireClientSecret = false,
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequirePkce = true,
+                    AllowAccessTokensViaBrowser = true,
+
+                    RedirectUris = new List<string>()
+                    {
+                        "http://localhost:4200/",
+                        "http://localhost:4200/callback",
+                        "http://localhost:4200/assets/silent-renew.html"
+                    },
+                    PostLogoutRedirectUris = new List<string>()
+                    {
+                        "http://localhost:4200/",
+                        "http://localhost:4200/unauthorized",
+                    },
+                    AllowedCorsOrigins = new List<string>()
+                    {
+                        "http://localhost:4200"
+                    },
+                    //ClientSecrets =
+                    //{
+                    //    new Secret("angular-secret".Sha256())
+                    //},
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Address,
+                        "roles",
+                    }
+                }
+            };
     }
 }

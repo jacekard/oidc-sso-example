@@ -16,13 +16,13 @@ namespace Marvin.IDP
              new TestUser
              {
                  SubjectId = "d860efca-22d9-47fd-8249-791ba61b07c7",
-                 Username = "Frank",
-                 Password = "password",
+                 Username = "Wojtek",
+                 Password = "pass",
 
                  Claims = new List<Claim>
                  {
-                     new Claim("given_name", "Frank"),
-                     new Claim("family_name", "Underwood"),
+                     new Claim("given_name", "Wojtek"),
+                     new Claim("family_name", "Borostowski"),
                      new Claim("address", "Main Road 1"),
                      new Claim("role", "FreeUser")
                  }
@@ -30,14 +30,27 @@ namespace Marvin.IDP
              new TestUser
              {
                  SubjectId = "b7539694-97e7-4dfe-84da-b4256e1ff5c7",
-                 Username = "Claire",
-                 Password = "password",
+                 Username = "Jacek",
+                 Password = "pass",
 
                  Claims = new List<Claim>
                  {
-                     new Claim("given_name", "Claire"),
-                     new Claim("family_name", "Underwood"),
+                     new Claim("given_name", "Jacek"),
+                     new Claim("family_name", "Ardanowski"),
                      new Claim("address", "Big Street 2"),
+                     new Claim("role", "PayingUser")
+                 }
+             },
+             new TestUser
+             {
+                 SubjectId = "ba524d27-bb83-44eb-bdaa-30ced04a1988",
+                 Username = "Karol",
+                 Password = "pass",
+                 Claims = new List<Claim>
+                 {
+                     new Claim("given_name", "Karol"),
+                     new Claim("family_name", "Szczepanski"),
+                     new Claim("address", "Big Street 3"),
                      new Claim("role", "PayingUser")
                  }
              }
