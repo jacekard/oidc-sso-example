@@ -9,7 +9,7 @@
             }
             <h1>
                 @Model.ClientName
-                <small>is requesting your permission</small>
+                <small>prosi o Twoj¹ zgodê.</small>
             </h1>
         </div>
     </div>
@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-sm-8">
                 <p>
-                    Please confirm that the authorization request quotes the code: "@Model.UserCode".
+                    PotwierdŸ, ¿e proœba o autoryzacjê ma taki sam kod: "@Model.UserCode".
                 </p>
             </div>
         </div>
@@ -32,14 +32,14 @@
             <form asp-action="Callback" class="consent-form">
                 <input asp-for="UserCode" type="hidden" value="@Model.UserCode" />
 
-                <div>Uncheck the permissions you do not wish to grant.</div>
+                <div>Odnacz zgody na uprawnienia, których nie chcesz udzieliæ.</div>
 
                 @if (Model.IdentityScopes.Any())
                 {
                     <div class="panel panel-default consent-buttons">
                         <div class="panel-heading">
                             <span class="glyphicon glyphicon-user"></span>
-                            Personal Information
+                            Informacje osobiste
                         </div>
                         <ul class="list-group">
                             @foreach (var scope in Model.IdentityScopes)
@@ -55,7 +55,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <span class="glyphicon glyphicon-tasks"></span>
-                            Application Access
+                            Dostêp do aplikacji
                         </div>
                         <ul class="list-group">
                             @foreach (var scope in Model.ResourceScopes)
@@ -71,14 +71,14 @@
                     <div class="consent-remember">
                         <label>
                             <input class="consent-scopecheck" asp-for="RememberConsent" />
-                            <strong>Remember My Decision</strong>
+                            <strong>Zapamiêtaj mój wybór</strong>
                         </label>
                     </div>
                 }
 
                 <div class="consent-buttons">
-                    <button name="button" value="yes" class="btn btn-primary" autofocus>Yes, Allow</button>
-                    <button name="button" value="no" class="btn">No, Do Not Allow</button>
+                    <button name="button" value="yes" class="btn btn-primary" autofocus>Tak, zezwól</button>
+                    <button name="button" value="no" class="btn">Nie, nie zezwalaj</button>
                     @if (Model.ClientUrl != null)
                     {
                         <a class="pull-right btn btn-default" target="_blank" href="@Model.ClientUrl">
