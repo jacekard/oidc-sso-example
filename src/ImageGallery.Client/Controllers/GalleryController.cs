@@ -122,12 +122,30 @@ namespace ImageGallery.Client.Controllers
             return RedirectToAction("Index");       
         }
 
+        [Authorize(Roles = "PayingUser")]
         public async Task<IActionResult> DeleteImage(Guid id)
         {
             var httpClient = _httpClientFactory.CreateClient("APIClient");
 
             var request = new HttpRequestMessage(
                 HttpMethod.Delete,
+                $"/api/images/{id}");
+
+            var response = await httpClient.SendAsync(
+                request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+
+            response.EnsureSuccessStatusCode();
+
+            return RedirectToAction("Index");
+        }
+
+        [Authorize(Roles = "PayingUser")]
+        public async Task<IActionResult> MarkWithStar(Guid id)
+        {
+            var httpClient = _httpClientFactory.CreateClient("APIClient");
+
+            var request = new HttpRequestMessage(
+                HttpMethod.Patch,
                 $"/api/images/{id}");
 
             var response = await httpClient.SendAsync(

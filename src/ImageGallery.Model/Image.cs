@@ -8,6 +8,8 @@ namespace ImageGallery.Model
  
         public string Title { get; set; }
  
-        public string FileName { get; set; }    
+        public string FileName { get; set; }
+
+        public bool HasStar { get; set; }
     }
 }
