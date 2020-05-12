@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+@model ImageGallery.Client.ViewModels.StarredImagesViewModel
+
+<div class="bottomMarginDefault">
+</div>
+
+<h3 class="text-center">@User.Identity.Name, welcome to the gallery of your favorite images</h3>
+<div style="margin-top:10px;" class="container">
+    @foreach (var item in Model.Images)
+    {
+        <div class="pull-left col-md-4">
+            <div>
+                <img class="thumbnailImage" src="@("https://localhost:44366/images/" + item.FileName)" />
+            </div>
+            <div>
+                <div class="h5">@item.Title</div>
+            </div>
+        </div>
+    }
+</div>
