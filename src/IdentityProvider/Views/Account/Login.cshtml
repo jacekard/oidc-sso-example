@@ -14,7 +14,9 @@
             <div class="col-sm-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
+
                         <h3 class="panel-title">Zaloguj się do systemu</h3>
+
                     </div>
                     <div class="panel-body">
 
@@ -80,8 +82,8 @@
         @if (!Model.EnableLocalLogin && !Model.VisibleExternalProviders.Any())
         {
             <div class="alert alert-warning">
-                <strong>Invalid login request</strong>
-                There are no login schemes configured for this client.
+                <strong>Nieprawidłowe próba logowania</strong>
+                Nie ma schematów logowania dla tej konfiguracji
             </div>
         }
     </div>
