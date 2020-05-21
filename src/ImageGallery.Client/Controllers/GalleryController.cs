@@ -59,6 +59,36 @@ namespace ImageGallery.Client.Controllers
             throw new Exception("Problem accessing the API");             
         }
 
+        public async Task<IActionResult> StarredImages()
+        {
+            await WriteOutIdentityInformation();
+
+            var httpClient = _httpClientFactory.CreateClient("APIClient");
+
+            var request = new HttpRequestMessage(
+                HttpMethod.Get,
+                "/api/images/");
+
+            var response = await httpClient.SendAsync(
+                request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+
+            if (response.IsSuccessStatusCode)
+            {
+                using (var responseStream = await response.Content.ReadAsStreamAsync())
+                {
+                    return View(new StarredImagesViewModel(
+                        (await JsonSerializer.DeserializeAsync<List<Image>>(responseStream)).Where(x => x.HasStar)));
+                }
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized ||
+                    response.StatusCode == System.Net.HttpStatusCode.Forbidden)
+            {
+                return RedirectToAction("AccessDenied", "Authorization");
+            }
+
+            throw new Exception("Problem accessing the API");
+        }
+
         public async Task<IActionResult> EditImage(Guid id)
         {
 
@@ -122,12 +152,30 @@ namespace ImageGallery.Client.Controllers
             return RedirectToAction("Index");       
         }
 
+        [Authorize(Roles = "PayingUser")]
         public async Task<IActionResult> DeleteImage(Guid id)
         {
             var httpClient = _httpClientFactory.CreateClient("APIClient");
 
             var request = new HttpRequestMessage(
                 HttpMethod.Delete,
+                $"/api/images/{id}");
+
+            var response = await httpClient.SendAsync(
+                request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+
+            response.EnsureSuccessStatusCode();
+
+            return RedirectToAction("Index");
+        }
+
+        [Authorize(Roles = "PayingUser")]
+        public async Task<IActionResult> MarkWithStar(Guid id)
+        {
+            var httpClient = _httpClientFactory.CreateClient("APIClient");
+
+            var request = new HttpRequestMessage(
+                HttpMethod.Patch,
                 $"/api/images/{id}");
 
             var response = await httpClient.SendAsync(

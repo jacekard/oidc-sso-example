@@ -36,6 +36,7 @@
                     <li><a asp-area="" asp-controller="Gallery" asp-action="Index">Home</a></li>
                     @if (User.IsInRole("PayingUser"))
                     {
+                        <li><a asp-area="" asp-controller="Gallery" asp-action="StarredImages">Starred Images</a></li>
                         <li><a asp-area="" asp-controller="Gallery" asp-action="AddImage">Add an image</a></li>
                         <li><a asp-area="" asp-controller="Gallery" asp-action="OrderFrame">Order frame</a></li>
                     }

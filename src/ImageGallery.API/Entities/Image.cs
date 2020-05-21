@@ -19,5 +19,7 @@ namespace ImageGallery.API.Entities
         [Required]
         [MaxLength(50)]
         public string OwnerId { get; set; }
+
+        public bool HasStar { get; set; }
     }
 }
