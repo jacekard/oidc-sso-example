@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityProvider", "src\Ide
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImageGallery", "ImageGallery", "{2AD547AF-D12C-449D-A9A0-19537C485FB4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectAccess", "src\ProjectAccess\ProjectAccess.csproj", "{BDEBDE86-397F-4F4C-9FBF-3AD4E82FB75A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,10 +39,6 @@ Global
 		{33E396CC-C5B0-4DAD-A3A5-13253472F99C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33E396CC-C5B0-4DAD-A3A5-13253472F99C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33E396CC-C5B0-4DAD-A3A5-13253472F99C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BDEBDE86-397F-4F4C-9FBF-3AD4E82FB75A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BDEBDE86-397F-4F4C-9FBF-3AD4E82FB75A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BDEBDE86-397F-4F4C-9FBF-3AD4E82FB75A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BDEBDE86-397F-4F4C-9FBF-3AD4E82FB75A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,7 +49,6 @@ Global
 		{226B95C9-A9A6-4DF7-992C-A5945AF3AF0F} = {2AD547AF-D12C-449D-A9A0-19537C485FB4}
 		{33E396CC-C5B0-4DAD-A3A5-13253472F99C} = {210E34C0-B761-40E2-9CAB-4334F8D2A554}
 		{2AD547AF-D12C-449D-A9A0-19537C485FB4} = {210E34C0-B761-40E2-9CAB-4334F8D2A554}
-		{BDEBDE86-397F-4F4C-9FBF-3AD4E82FB75A} = {210E34C0-B761-40E2-9CAB-4334F8D2A554}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1DF2C930-F7ED-4CAF-9B6F-5D1017A5A58F}

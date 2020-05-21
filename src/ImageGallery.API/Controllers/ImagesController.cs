@@ -140,5 +140,22 @@ namespace ImageGallery.API.Controllers
 
             return NoContent();
         }
+
+        [HttpPatch("{id}")]
+        public IActionResult MarkWithStar(Guid id)
+        {
+            var imageFromRepo = _galleryRepository.GetImage(id);
+            if (imageFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            imageFromRepo.HasStar = !imageFromRepo.HasStar;
+            _galleryRepository.UpdateImage(imageFromRepo);
+
+            _galleryRepository.Save();
+
+            return NoContent();
+        }
     }
 }

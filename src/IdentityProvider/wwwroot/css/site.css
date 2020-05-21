@@ -1,19 +1,16 @@
-﻿.my_background{
-    background-color: forestgreen;
-}
-a {
-    color: lightgreen;
-}
-.version {
-    color: mediumseagreen;
-}
-.new-text {
-    color:black;
-}
-
-body {
+﻿body {
   margin-top: 65px;
 }
+
+.my-navbar {
+    background-color: aqua !important;
+    border: 0px solid;
+}
+
+.navbar-brand {
+    color: black !important;
+}
+
 .navbar-header {
   position: relative;
   top: -4px;
@@ -22,6 +19,7 @@ body {
   position: relative;
   top: -2px;
   display: inline;
+  width: 40px;
 }
 .icon {
   position: relative;
